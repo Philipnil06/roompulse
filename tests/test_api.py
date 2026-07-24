@@ -30,7 +30,7 @@ def test_health_and_authentication(tmp_path):
         assert denied.status_code == 401
 
 
-def test_local_dashboard_cors_on_dynamic_port(tmp_path):
+def test_local_cors_on_dynamic_port(tmp_path):
     with make_client(tmp_path) as client:
         response = client.options(
             "/v1/rooms/room-philip/latest",

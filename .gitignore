@@ -3,8 +3,6 @@
 *.elf
 .pio/
 build/
-!dashboard/build/
-!dashboard/build/**
 
 # Local secrets
 secrets.h
@@ -26,9 +24,8 @@ __pycache__/
 *.egg-info/
 data/
 
-# Local work and generated dashboard files
+# Local work
 work/
-dashboard/node_modules/
-dashboard/.next/
-dashboard/dist/
-dashboard/.wrangler/
+
+# Removed local dashboard build artifacts
+dashboard/
