@@ -1,0 +1,2 @@
+"""RoomPulse MCP server package."""
+

@@ -1,0 +1,570 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #141718;
+  --paper: #f0eee8;
+  --card: #faf9f5;
+  --lime: #c9f05a;
+  --coral: #ff6b4a;
+  --blue: #4c88ff;
+  --line: rgba(20, 23, 24, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.shell {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.topbar {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  padding: 22px clamp(22px, 5vw, 76px);
+}
+
+.brand {
+  align-items: center;
+  color: var(--ink);
+  display: flex;
+  font-family: var(--font-geist-mono);
+  font-size: 0.78rem;
+  font-weight: 760;
+  gap: 11px;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+}
+
+.brandMark {
+  align-items: center;
+  background: var(--ink);
+  border-radius: 50%;
+  display: flex;
+  height: 25px;
+  justify-content: center;
+  width: 25px;
+}
+
+.brandMark span {
+  background: var(--lime);
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+}
+
+.livePill {
+  align-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  display: flex;
+  font-family: var(--font-geist-mono);
+  font-size: 0.67rem;
+  font-weight: 700;
+  gap: 8px;
+  letter-spacing: 0.09em;
+  padding: 8px 13px;
+}
+
+.statusDot {
+  animation: pulse 2s infinite;
+  background: #38a35b;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+}
+
+.statusDotError {
+  animation: none;
+  background: var(--coral);
+}
+
+.hero {
+  display: grid;
+  gap: 6vw;
+  grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.75fr);
+  padding: clamp(68px, 9vw, 132px) clamp(22px, 5vw, 76px) 90px;
+}
+
+.heroCopy {
+  align-self: center;
+}
+
+.eyebrow {
+  font-family: var(--font-geist-mono);
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.17em;
+  margin: 0 0 25px;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(3.8rem, 9vw, 9rem);
+  font-weight: 600;
+  letter-spacing: -0.075em;
+  line-height: 0.84;
+  margin-bottom: 38px;
+}
+
+h1 em {
+  color: var(--coral);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
+.lede {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+  max-width: 590px;
+}
+
+.nowPanel {
+  align-self: center;
+  background: var(--ink);
+  box-shadow: 13px 13px 0 var(--lime);
+  color: white;
+  min-height: 465px;
+  padding: 29px;
+  transform: rotate(1.25deg);
+}
+
+.nowHeader,
+.humidityRow {
+  display: flex;
+  font-family: var(--font-geist-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  justify-content: space-between;
+  letter-spacing: 0.12em;
+}
+
+.nowHeader {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.23);
+  padding-bottom: 20px;
+}
+
+.primaryReading {
+  align-items: flex-start;
+  display: flex;
+  gap: 7px;
+  padding: 52px 0 38px;
+}
+
+.readingValue {
+  font-size: clamp(6.3rem, 11vw, 9rem);
+  font-weight: 520;
+  letter-spacing: -0.09em;
+  line-height: 0.72;
+}
+
+.readingUnit {
+  color: var(--lime);
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.humidityRow {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.23);
+  border-top: 1px solid rgba(255, 255, 255, 0.23);
+  padding: 21px 0;
+}
+
+.humidityRow strong {
+  color: var(--blue);
+  font-size: 1.4rem;
+}
+
+.comfortRow {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  padding-top: 27px;
+}
+
+.comfortIcon {
+  align-items: center;
+  background: var(--lime);
+  border-radius: 50%;
+  color: var(--ink);
+  display: flex;
+  flex: 0 0 auto;
+  font-weight: 900;
+  height: 42px;
+  justify-content: center;
+  width: 42px;
+}
+
+.comfortWarning {
+  background: var(--coral);
+}
+
+.comfortRow strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.comfortRow p {
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  margin-bottom: 0;
+}
+
+.notice {
+  align-items: center;
+  background: var(--coral);
+  display: flex;
+  justify-content: space-between;
+  margin: 0 clamp(22px, 5vw, 76px) 42px;
+  padding: 20px 23px;
+}
+
+.notice strong {
+  display: block;
+}
+
+.notice p {
+  font-size: 0.88rem;
+  margin: 4px 0 0;
+}
+
+.notice button {
+  background: var(--ink);
+  border: 0;
+  color: white;
+  cursor: pointer;
+  padding: 11px 17px;
+}
+
+.metricsSection {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  padding: 80px clamp(22px, 5vw, 76px);
+}
+
+.sectionHeading {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 42px;
+}
+
+.sectionHeading h2,
+.askSection h2 {
+  font-size: clamp(2.4rem, 5vw, 5rem);
+  font-weight: 580;
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+  margin-bottom: 0;
+}
+
+.sectionHeading > p {
+  color: rgba(20, 23, 24, 0.56);
+  font-family: var(--font-geist-mono);
+  font-size: 0.7rem;
+}
+
+.metricsGrid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 1.35fr 0.65fr;
+}
+
+.metricCard {
+  border: 1px solid var(--ink);
+  min-height: 420px;
+  padding: 25px;
+}
+
+.temperatureCard {
+  background: var(--lime);
+}
+
+.humidityCard {
+  background: var(--blue);
+  color: white;
+}
+
+.metricTop {
+  align-items: center;
+  display: flex;
+  font-family: var(--font-geist-mono);
+  font-size: 0.68rem;
+  justify-content: space-between;
+  letter-spacing: 0.13em;
+}
+
+.metricTop strong {
+  background: var(--ink);
+  color: white;
+  letter-spacing: 0;
+  padding: 7px 10px;
+}
+
+.humidityCard .metricTop strong {
+  background: white;
+  color: var(--ink);
+}
+
+.chart {
+  align-items: end;
+  border-bottom: 1px solid rgba(20, 23, 24, 0.45);
+  display: flex;
+  gap: clamp(2px, 0.5vw, 7px);
+  height: 235px;
+  margin: 31px 0 22px;
+  overflow: hidden;
+}
+
+.chart > span {
+  background: var(--ink);
+  flex: 1;
+  min-width: 3px;
+  opacity: 0.84;
+}
+
+.emptyChart {
+  align-self: center;
+  font-family: var(--font-geist-mono);
+  font-size: 0.72rem;
+  margin: auto;
+}
+
+.rangeRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.rangeRow div {
+  border-right: 1px solid currentColor;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 17px;
+}
+
+.rangeRow div:first-child {
+  padding-left: 0;
+}
+
+.rangeRow div:last-child {
+  border-right: 0;
+}
+
+.rangeRow span {
+  font-family: var(--font-geist-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.rangeRow strong {
+  font-size: 1.3rem;
+}
+
+.humidityGauge {
+  padding: 58px 0 50px;
+}
+
+.gaugeLabels {
+  display: flex;
+  font-family: var(--font-geist-mono);
+  font-size: 0.56rem;
+  justify-content: space-between;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+  opacity: 0.75;
+}
+
+.gaugeTrack {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.22) 0 30%,
+    var(--lime) 30% 60%,
+    rgba(255, 255, 255, 0.22) 60% 100%
+  );
+  height: 20px;
+  position: relative;
+}
+
+.gaugeTrack span {
+  background: var(--coral);
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  height: 30px;
+  position: absolute;
+  top: -5px;
+  transform: translateX(-50%);
+  transition: left 500ms ease;
+  width: 30px;
+}
+
+.gaugeValue {
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 580;
+  letter-spacing: -0.08em;
+  margin-top: 36px;
+}
+
+.askSection {
+  display: grid;
+  gap: 8vw;
+  grid-template-columns: 0.9fr 1.1fr;
+  padding: 100px clamp(22px, 5vw, 76px);
+}
+
+.promptList {
+  border-top: 1px solid var(--ink);
+}
+
+.promptList div {
+  align-items: center;
+  border-bottom: 1px solid var(--ink);
+  display: grid;
+  gap: 25px;
+  grid-template-columns: 48px 1fr;
+  padding: 23px 0;
+}
+
+.promptList span {
+  color: var(--coral);
+  font-family: var(--font-geist-mono);
+  font-size: 0.65rem;
+}
+
+.promptList p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  font-style: italic;
+  margin: 0;
+}
+
+footer {
+  background: var(--ink);
+  color: rgba(255, 255, 255, 0.66);
+  display: flex;
+  font-family: var(--font-geist-mono);
+  font-size: 0.6rem;
+  justify-content: space-between;
+  letter-spacing: 0.08em;
+  padding: 21px clamp(22px, 5vw, 76px);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 163, 91, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(56, 163, 91, 0);
+  }
+}
+
+@media (max-width: 880px) {
+  .hero,
+  .metricsGrid,
+  .askSection {
+    grid-template-columns: 1fr;
+  }
+
+  .nowPanel {
+    max-width: 560px;
+    transform: none;
+  }
+
+  .sectionHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sectionHeading > p {
+    margin-top: 18px;
+  }
+
+  .askSection {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 540px) {
+  .hero {
+    padding-top: 60px;
+  }
+
+  h1 {
+    font-size: 3.7rem;
+  }
+
+  .nowPanel {
+    box-shadow: 8px 8px 0 var(--lime);
+    min-height: 420px;
+    padding: 23px;
+  }
+
+  .readingValue {
+    font-size: 6rem;
+  }
+
+  .sectionHeading h2,
+  .askSection h2 {
+    font-size: 2.8rem;
+  }
+
+  .metricsSection,
+  .askSection {
+    padding-bottom: 65px;
+    padding-top: 65px;
+  }
+
+  .metricCard {
+    min-height: 390px;
+    padding: 20px;
+  }
+
+  .notice,
+  footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+
+  .statusDot {
+    animation: none;
+  }
+}

@@ -1,0 +1,11 @@
+# Add this block to your Codex config after replacing <ABSOLUTE_REPO_PATH>.
+# Restart Codex after changing MCP configuration.
+
+[mcp_servers.roompulse]
+command = "<ABSOLUTE_REPO_PATH>\\.venv\\Scripts\\python.exe"
+args = ["-m", "mcp_server.server"]
+cwd = "<ABSOLUTE_REPO_PATH>"
+
+[mcp_servers.roompulse.env]
+ROOMPULSE_API_URL = "http://127.0.0.1:8000"
+ROOMPULSE_ROOM_ID = "room-philip"

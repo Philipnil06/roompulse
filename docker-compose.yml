@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    environment:
+      ROOMPULSE_DB_PATH: /data/roompulse.db
+      ROOMPULSE_DEVICE_TOKEN: ${ROOMPULSE_DEVICE_TOKEN:-local-development-token}
+    ports:
+      - "8000:8000"
+    volumes:
+      - roompulse-data:/data
+
+volumes:
+  roompulse-data:
+

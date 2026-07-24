@@ -3,9 +3,12 @@
 *.elf
 .pio/
 build/
+!dashboard/build/
+!dashboard/build/**
 
 # Local secrets
 secrets.h
+firmware/roompulse/config.h
 .env
 .env.*
 !*.example
@@ -14,3 +17,18 @@ secrets.h
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+*.egg-info/
+data/
+
+# Local work and generated dashboard files
+work/
+dashboard/node_modules/
+dashboard/.next/
+dashboard/dist/
+dashboard/.wrangler/

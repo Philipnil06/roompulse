@@ -30,7 +30,7 @@ The hardware is not an afterthought. The system closes the loop from a physical 
 ### Device
 
 - **Board:** Axiometa Genesis Mini (ESP32-S3), already connected as `COM4`.
-- **Sensor:** AX22-0011 DHT11. It is a single-wire device; the vendor example uses GPIO 14.
+- **Sensor:** AX22-0011 DHT11. Its schematic routes DATA through AX22 `IO1`; S1/P1 on Genesis Mini maps that signal to GPIO 3 (`P1_IO1`).
 - **Cadence:** one sample/minute (the sensor itself updates at most once/second).
 - **Resilience:** reconnect Wi-Fi, do not transmit invalid `NaN` samples, add an offline queue only after end-to-end ingestion works.
 - **Power:** after flashing, use any suitable USB-C wall adapter. The board then works independently from the computer.
@@ -62,8 +62,8 @@ The tool response includes the actual timestamp so the assistant can say *"last 
 
 - [ ] Device is running from wall power, not USB tethered to the laptop.
 - [ ] Dashboard has at least 20 minutes of real readings.
-- [ ] Natural-language query retrieves a live timestamped reading.
-- [ ] Repo is public with setup instructions and no secrets.
+- [x] Natural-language query retrieves a live timestamped reading through the tested MCP tools.
+- [x] Repo is public with setup instructions and no secrets.
 - [ ] Demo video shows hardware, dashboard, and a Codex/ChatGPT question.
 - [ ] Public Notion page includes all required form items.
 
