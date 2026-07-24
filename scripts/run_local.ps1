@@ -9,9 +9,4 @@ if (-not (Test-Path $python)) {
 
 Write-Host "RoomPulse API:       http://127.0.0.1:8000"
 Write-Host "RoomPulse API docs:  http://127.0.0.1:8000/docs"
-Write-Host "RoomPulse dashboard: http://127.0.0.1:3000"
-Write-Host ""
-Write-Host "Open a second terminal and run: cd dashboard; npm run dev"
-
 & $python -m uvicorn backend.app:app --host 0.0.0.0 --port 8000 --reload
-
