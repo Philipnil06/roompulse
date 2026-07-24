@@ -1,0 +1,16 @@
+# Arduino / PlatformIO build output
+*.bin
+*.elf
+.pio/
+build/
+
+# Local secrets
+secrets.h
+.env
+.env.*
+!*.example
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
