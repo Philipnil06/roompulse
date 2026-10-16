@@ -10,6 +10,11 @@
 
 Built for **NexusHacks 2026 — AI × Robotics**.
 
+![RoomPulse dashboard with generated demo measurements](docs/images/dashboard-demo.png)
+
+*Local dashboard preview using seeded example data. The displayed readings are
+generated for this screenshot, not a current physical-room measurement.*
+
 ## Verified local demo
 
 The full local path has been exercised on the real hardware:
@@ -20,7 +25,7 @@ AX22-0011 in S1 → Genesis Mini on COM4 → serial bridge → FastAPI/SQLite
                                                      ↘ MCP tools
 ```
 
-Most recent hardware verification during development:
+Recorded hardware reading from original development (not a current reading):
 
 ```text
 Temperature: 24.8 °C
@@ -37,7 +42,7 @@ flowchart LR
   S["DHT11 sensor<br/>AX22-0011 in S1"] --> G["Axiometa Genesis Mini<br/>ESP32-S3"]
   G -->|"Wi-Fi + HTTPS"| A["RoomPulse API<br/>FastAPI"]
   G -.->|"USB bridge for local testing"| A
-  A --> D[("SQLite locally<br/>PostgreSQL when deployed")]
+  A --> D[("SQLite history")]
   A --> M["Read-only MCP server"]
   M --> C["Codex / ChatGPT"]
   A --> W["Live dashboard"]
@@ -62,6 +67,10 @@ AI answers are grounded in timestamped tool output. The model receives the readi
 
 ## Quick start on Windows
 
+Use Python 3.12 and Node.js 24. Run API commands from the repository root;
+dashboard commands run from `dashboard/`. The seeded demo needs no sensor or
+model API key. The first dependency installation needs internet access.
+
 ### 1. Install and test the API
 
 ```powershell
@@ -80,7 +89,7 @@ Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) for the interactiv
 
 ### 2. Add data
 
-For a visual demo with 24 hours of history:
+For a visual demo with generated example history:
 
 ```powershell
 .\.venv\Scripts\python.exe scripts\seed_demo.py
@@ -98,9 +107,19 @@ Omit `--once` to keep forwarding readings while the board remains connected.
 
 ```powershell
 cd dashboard
-npm install
+npm ci
 npm run dev
 ```
+
+When using the seed script, start the dashboard with its demo label enabled:
+
+```powershell
+$env:NEXT_PUBLIC_DEMO_MODE = "true"
+npm run dev
+```
+
+This label identifies generated data; it does not create measurements itself.
+Leave the setting unset for a physical-sensor run.
 
 Open the exact local URL printed by the dev server, normally [http://localhost:3000](http://localhost:3000).
 
@@ -153,6 +172,11 @@ The committed configuration runs in sensor-only mode and prints a reading every 
 The local device token is `local-development-token`. Replace it through `ROOMPULSE_DEVICE_TOKEN` before exposing the API.
 
 ## Validation
+
+[GitHub Actions](https://github.com/Philipnil06/roompulse/actions/workflows/checks.yml)
+runs the Python suite on Windows and Linux, plus the dashboard lint, production
+build, and rendered-HTML tests on Linux. Firmware compilation and physical
+sensor tests remain separate hardware checks.
 
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -q

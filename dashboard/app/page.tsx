@@ -41,6 +41,7 @@ const API_URL =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ??
   "http://127.0.0.1:8000";
 const ROOM_ID = "room-philip";
+const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE === "true";
 
 const trendLabels = {
   rising: "Rising",
@@ -116,7 +117,7 @@ export default function Home() {
         </a>
         <div className="livePill">
           <span className={error ? "statusDot statusDotError" : "statusDot"} />
-          {error ? "LOCAL DEMO" : "LIVE SENSOR"}
+          {DEMO_MODE ? "SEEDED DEMO DATA" : error ? "API UNAVAILABLE" : "LIVE SENSOR"}
         </div>
       </header>
 
@@ -129,7 +130,7 @@ export default function Home() {
             now <em>queryable.</em>
           </h1>
           <p className="lede">
-            Live climate telemetry from an Axiometa Genesis Mini — ready for
+            {DEMO_MODE ? "Generated example climate data" : "Live climate telemetry from an Axiometa Genesis Mini"} — ready for
             Codex and ChatGPT to read, summarize, and explain.
           </p>
         </div>
@@ -202,7 +203,7 @@ export default function Home() {
           </div>
           <p>
             {summary
-              ? `${summary.sample_count} grounded measurements`
+              ? `${summary.sample_count} ${DEMO_MODE ? "generated demo readings" : "grounded measurements"}`
               : "Waiting for grounded measurements"}
           </p>
         </div>
