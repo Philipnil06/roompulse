@@ -12,3 +12,7 @@ npm test
 
 Set `NEXT_PUBLIC_API_URL` when the API is not available at
 `http://127.0.0.1:8000`.
+
+Set `NEXT_PUBLIC_DEMO_MODE=true` when showing generated data from
+`scripts/seed_demo.py`. This labels the dashboard as seeded demo data; it does
+not generate measurements itself. Leave it unset for a physical-sensor run.
